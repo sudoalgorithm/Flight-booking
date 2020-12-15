@@ -19,7 +19,7 @@ spec:
       imagePullSecrets:
         - name: all-icr-io
       containers:
-      - image: de.icr.io/zero-to-cloud-native/web-frontend-02cn:v1
+      - image: de.icr.io/ek-test/flight-booking
         name: flight-booking-app
         ports:
           - containerPort: 80
