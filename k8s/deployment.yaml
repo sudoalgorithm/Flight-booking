@@ -10,19 +10,19 @@ spec:
   selector:
     matchLabels:
       app: flight-booking-app
-  strategy: {}
   template:
     metadata:
       labels:
         app: flight-booking-app
     spec:
       imagePullSecrets:
-        - name: all-icr-io
+        - name:  all-icr-io
       containers:
       - image: de.icr.io/ek-test/flight-booking:v1
         name: flight-booking-app
         ports:
           - containerPort: 80
+            protocol: TCP
         resources:
             limits:
               cpu: 50m
