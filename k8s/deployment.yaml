@@ -4,7 +4,7 @@ metadata:
   labels:
     app: flight-booking-app
   name: flight-booking-app-deployment
-	namespace: default
+  namespace: default
 spec:
   replicas: 1
   selector:
@@ -34,11 +34,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  creationTimestamp: null
   labels:
     app: flight-booking-app
   name: flight-booking-app-svc
-	namespace: default
+  namespace: default
 spec:
   ports:
   - name: https
