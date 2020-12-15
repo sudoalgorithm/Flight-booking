@@ -19,10 +19,10 @@ spec:
       description: The IBM Cloud Kubernetes cluster name
     - name: clusterRegion
       description: The IBM Cloud Kubernetes cluster region
-      default: us-south
+      default: eu-de
     - name: clusterNamespace
       description: The Kubernetes cluster namespace
-      default: prod
+      default: default
   resourcetemplates:
     - apiVersion: v1
       kind: PersistentVolumeClaim
