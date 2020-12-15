@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: flight-booking-app
+  name: flight-booking-app-deployment
+	namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: flight-booking-app
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: flight-booking-app
+    spec:
+      imagePullSecrets:
+        - name: all-icr-io
+      containers:
+      - image: de.icr.io/zero-to-cloud-native/web-frontend-02cn:v1
+        name: flight-booking-app
+        ports:
+          - containerPort: 80
+        resources:
+            limits:
+              cpu: 50m
+              memory: 64Mi
+            requests:
+              cpu: 25m
+              memory: 32Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: flight-booking-app
+  name: flight-booking-app-svc
+	namespace: default
+spec:
+  ports:
+  - name: https
+    port: 443
+    protocol: TCP
+    targetPort: 443
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: flight-booking-app
+  type: LoadBalancer
+status:
+  loadBalancer: {}
+
